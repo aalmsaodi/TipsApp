@@ -21,12 +21,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var eachShare: UILabel!
     @IBOutlet weak var maskView: UIView!
     
-
     var numPeople = 1
     var animate = true
     
     let formatter = NumberFormatter()
-    
     
     override func viewDidLoad() {
         
