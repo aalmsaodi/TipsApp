@@ -15,7 +15,6 @@
 		CE8490A71F0FF12700D00E41 /* tip_calculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490A61F0FF12700D00E41 /* tip_calculatorUITests.swift */; };
 		CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490B41F1014A500D00E41 /* SettingsViewController.swift */; };
 		CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */; };
-		CEBFA3ED1F158E6300C18528 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEBFA3EC1F158E6300C18528 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		CE8490A81F0FF12700D00E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8490B41F1014A500D00E41 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CEBFA3EA1F14A82E00C18528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CEBFA3EC1F158E6300C18528 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 		CE84907A1F0FF12700D00E41 = {
 			isa = PBXGroup;
 			children = (
-				CEBFA3EC1F158E6300C18528 /* README.md */,
 				CE8490851F0FF12700D00E41 /* tip_calculator */,
 				CE84909A1F0FF12700D00E41 /* tip_calculatorTests */,
 				CE8490A51F0FF12700D00E41 /* tip_calculatorUITests */,
@@ -267,7 +264,6 @@
 			files = (
 				CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */,
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
-				CEBFA3ED1F158E6300C18528 /* README.md in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
