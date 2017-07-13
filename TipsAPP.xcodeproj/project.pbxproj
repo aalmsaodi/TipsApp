@@ -11,9 +11,8 @@
 		CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490881F0FF12700D00E41 /* ViewController.swift */; };
 		CE84908C1F0FF12700D00E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE84908A1F0FF12700D00E41 /* Main.storyboard */; };
 		CE84908E1F0FF12700D00E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE84908D1F0FF12700D00E41 /* Assets.xcassets */; };
-		CE84909C1F0FF12700D00E41 /* tip_calculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84909B1F0FF12700D00E41 /* tip_calculatorTests.swift */; };
-		CE8490A71F0FF12700D00E41 /* tip_calculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490A61F0FF12700D00E41 /* tip_calculatorUITests.swift */; };
 		CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490B41F1014A500D00E41 /* SettingsViewController.swift */; };
+		CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40B1F179A6200B1053E /* Bill.swift */; };
 		CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -42,12 +41,9 @@
 		CE84908D1F0FF12700D00E41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE8490921F0FF12700D00E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8490971F0FF12700D00E41 /* TipsAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE84909B1F0FF12700D00E41 /* tip_calculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tip_calculatorTests.swift; sourceTree = "<group>"; };
-		CE84909D1F0FF12700D00E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8490A21F0FF12700D00E41 /* TipsAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE8490A61F0FF12700D00E41 /* tip_calculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tip_calculatorUITests.swift; sourceTree = "<group>"; };
-		CE8490A81F0FF12700D00E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8490B41F1014A500D00E41 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CEBBD40B1F179A6200B1053E /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		CEBFA3EA1F14A82E00C18528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8490851F0FF12700D00E41 /* tip_calculator */,
-				CE84909A1F0FF12700D00E41 /* tip_calculatorTests */,
-				CE8490A51F0FF12700D00E41 /* tip_calculatorUITests */,
 				CE8490841F0FF12700D00E41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,33 +93,40 @@
 		CE8490851F0FF12700D00E41 /* tip_calculator */ = {
 			isa = PBXGroup;
 			children = (
-				CE8490861F0FF12700D00E41 /* AppDelegate.swift */,
-				CE8490881F0FF12700D00E41 /* ViewController.swift */,
-				CE84908A1F0FF12700D00E41 /* Main.storyboard */,
-				CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */,
-				CE8490B41F1014A500D00E41 /* SettingsViewController.swift */,
-				CE84908D1F0FF12700D00E41 /* Assets.xcassets */,
+				CEBBD4061F17305400B1053E /* Model */,
+				CEBBD4041F17301700B1053E /* Controller */,
+				CEBBD4051F17304300B1053E /* View */,
 				CE8490921F0FF12700D00E41 /* Info.plist */,
 			);
 			path = tip_calculator;
 			sourceTree = "<group>";
 		};
-		CE84909A1F0FF12700D00E41 /* tip_calculatorTests */ = {
+		CEBBD4041F17301700B1053E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE84909B1F0FF12700D00E41 /* tip_calculatorTests.swift */,
-				CE84909D1F0FF12700D00E41 /* Info.plist */,
+				CE8490861F0FF12700D00E41 /* AppDelegate.swift */,
+				CE8490881F0FF12700D00E41 /* ViewController.swift */,
+				CE8490B41F1014A500D00E41 /* SettingsViewController.swift */,
 			);
-			path = tip_calculatorTests;
+			name = Controller;
 			sourceTree = "<group>";
 		};
-		CE8490A51F0FF12700D00E41 /* tip_calculatorUITests */ = {
+		CEBBD4051F17304300B1053E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE8490A61F0FF12700D00E41 /* tip_calculatorUITests.swift */,
-				CE8490A81F0FF12700D00E41 /* Info.plist */,
+				CE84908A1F0FF12700D00E41 /* Main.storyboard */,
+				CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */,
+				CE84908D1F0FF12700D00E41 /* Assets.xcassets */,
 			);
-			path = tip_calculatorUITests;
+			name = View;
+			sourceTree = "<group>";
+		};
+		CEBBD4061F17305400B1053E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEBBD40B1F179A6200B1053E /* Bill.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +197,7 @@
 				TargetAttributes = {
 					CE8490821F0FF12700D00E41 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = EGLENF5Q49;
 						ProvisioningStyle = Automatic;
 					};
 					CE8490961F0FF12700D00E41 = {
@@ -262,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */,
 				CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */,
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
@@ -272,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE84909C1F0FF12700D00E41 /* tip_calculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8490A71F0FF12700D00E41 /* tip_calculatorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -402,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -414,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EGLENF5Q49;
 				INFOPLIST_FILE = tip_calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculator";
@@ -426,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EGLENF5Q49;
 				INFOPLIST_FILE = tip_calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculator";
