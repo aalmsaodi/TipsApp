@@ -8,14 +8,7 @@
 
 import UIKit
 
-var tipPercentages = [15, 20, 25]
-var includeTax = false
-var taxPercentage = 7.5
-var maxNumP = 20
-let defaults = UserDefaults.standard
-
 class SettingsViewController: UIViewController {
-
 
     @IBOutlet weak var tipPercent_1: UITextField!
     @IBOutlet weak var tipPercent_2: UITextField!
@@ -29,13 +22,20 @@ class SettingsViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        //Updating Settings view values
+        super.viewWillAppear(animated)
+        
+        tipPercent_1.text = String(tipPercentages[0])
+        tipPercent_2.text = String(tipPercentages[1])
+        tipPercent_3.text = String(tipPercentages[2])
+
         taxPercentageField.text = String(taxPercentage)
         MaxnumPeople.text = String(maxNumP)
         taxSwitch.setOn(includeTax, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         savingSettingsValues()
         maxNumP = Int(MaxnumPeople.text!)!
     }
@@ -76,5 +76,4 @@ class SettingsViewController: UIViewController {
         defaults.set(MaxnumPeople.text, forKey: "numP")
         defaults.set(taxSwitch.isOn, forKey: "taxInc")
     }
-    
 }

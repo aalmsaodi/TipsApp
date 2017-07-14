@@ -13,6 +13,7 @@
 		CE84908E1F0FF12700D00E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE84908D1F0FF12700D00E41 /* Assets.xcassets */; };
 		CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490B41F1014A500D00E41 /* SettingsViewController.swift */; };
 		CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40B1F179A6200B1053E /* Bill.swift */; };
+		CEBBD4101F189F4900B1053E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40F1F189F4900B1053E /* README.md */; };
 		CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		CE8490A21F0FF12700D00E41 /* TipsAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8490B41F1014A500D00E41 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CEBBD40B1F179A6200B1053E /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		CEBBD40F1F189F4900B1053E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEBFA3EA1F14A82E00C18528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 		CE84907A1F0FF12700D00E41 = {
 			isa = PBXGroup;
 			children = (
+				CEBBD40F1F189F4900B1053E /* README.md */,
 				CE8490851F0FF12700D00E41 /* tip_calculator */,
 				CE8490841F0FF12700D00E41 /* Products */,
 			);
@@ -266,6 +269,7 @@
 			files = (
 				CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */,
 				CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */,
+				CEBBD4101F189F4900B1053E /* README.md in Sources */,
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
 			);

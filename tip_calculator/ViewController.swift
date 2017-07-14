@@ -8,6 +8,15 @@
 
 import UIKit
 
+var tipPercentages = [15, 20, 25]
+var includeTax = false
+var taxPercentage = 7.5
+var maxNumP = 20
+let defaults = UserDefaults.standard
+let clearDefaultsAfter = 600.0 //seconds
+var notUsedForLongTime = false
+var firstRun = true
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var tipLabel: UILabel!
@@ -22,27 +31,40 @@ class ViewController: UIViewController {
     @IBOutlet weak var maskView: UIView!
     
     var numPeople = 1
-    var animate = true
-    
     let formatter = NumberFormatter()
-    
     var theBill = Bill()
-    
+    var animate = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting up the coordinats of "billField"
+        billField.layer.sublayerTransform = CATransform3DMakeTranslation(-30, 0, 0)
+        
+        // Setting up the right color of the navigating bar
+        navigationController?.navigationBar.barTintColor = UIColor(red: 102/255, green: 205/255, blue: 255/255, alpha: 1)
+        
         preparingFrontView()
         
-        if (defaults.double(forKey: "0") != 0) { //Checking if user defaults were set up already
-            loadSavedSettingsValues()
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.preparingFrontView), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         numPeopleSlider.maximumValue = Float(maxNumP)
+        
+        if (notUsedForLongTime == false){
+            preparingFrontView()
+            
+            if (defaults.double(forKey: "0") != 0) { //Checking if settings defaults were set up already
+                loadSavedSettingsDefaultsValues()
+            }
+        }
+        
         calculateBill()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,14 +123,40 @@ class ViewController: UIViewController {
         
     }
    
-    func loadSavedFrontViewValues(){
+    func preparingFrontView(){
+        
+        if !notUsedForLongTime && defaults.string(forKey: "bill") != nil {
+            loadSavedFrontViewDefaultsValues()
+            maskView.alpha = 0
+        }
+        
+        if (notUsedForLongTime || firstRun) {
+            clearAllSavedUserDefaults()
+            
+            // Getting the local currency symbol of the device
+            let locale = Locale.current
+            let currencySymbol = locale.currencySymbol!
+            billField.placeholder = currencySymbol
+            billField.text = nil
+            
+            maskView.alpha = 1
+            animate = true
+            
+            notUsedForLongTime = false
+            firstRun = false
+        }
+        
+        billField.becomeFirstResponder()
+    }
+    
+    func loadSavedFrontViewDefaultsValues(){
         
         billField.text = String(describing: NSNumber(value: defaults.double(forKey: "bill")))
         theBill.bill = Double(defaults.string(forKey: "bill")!)!
     }
     
     
-    func loadSavedSettingsValues(){
+    func loadSavedSettingsDefaultsValues(){
         
         for i in 0...2 {
             tipPercentages[i] = Int(defaults.string(forKey: String(i))!)!
@@ -121,29 +169,10 @@ class ViewController: UIViewController {
 
     }
     
-
-    func preparingFrontView(){
-        // Setting up the coordinats of "billField"
-        billField.layer.sublayerTransform = CATransform3DMakeTranslation(-30, 0, 0)
-        
-        // Setting up the right color of the navigating bar
-        navigationController?.navigationBar.barTintColor = UIColor(red: 102/255, green: 205/255, blue: 255/255, alpha: 1)
-        
-        // Getting the local currency symbol of the device
-        let locale = Locale.current
-        let currencySymbol = locale.currencySymbol!
-        
-        if (defaults.double(forKey: "bill") != 0){ //Checking if user defaults were set up already
-            loadSavedFrontViewValues()
-            
-            // Animating and showing "maskView" is needed the first time the app is used
-            animate = false
-            maskView.alpha = 0
-            
-        } else {
-            billField.placeholder = currencySymbol
-            billField.becomeFirstResponder()
-        }
+    func clearAllSavedUserDefaults(){
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
     }
+    
 }
 
