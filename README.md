@@ -35,6 +35,6 @@ The following **Additional** features are implemented:
 
 ## Video Walkthrough 
 
-<img src='https://giphy.com/gifs/3oKIPCdMrVs3u27AiI' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/3oKIPCdMrVs3u27AiI/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
