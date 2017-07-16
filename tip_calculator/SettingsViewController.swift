@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var taxPercentageField: UITextField!
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBOutlet weak var MaxnumPeople: UITextField!
+    @IBOutlet var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class SettingsViewController: UIViewController {
         taxPercentageField.text = String(taxPercentage)
         MaxnumPeople.text = String(maxNumP)
         taxSwitch.setOn(includeTax, animated: false)
+        darkLightBackground()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,5 +77,9 @@ class SettingsViewController: UIViewController {
         defaults.set(taxPercentageField.text, forKey: "taxP")
         defaults.set(MaxnumPeople.text, forKey: "numP")
         defaults.set(taxSwitch.isOn, forKey: "taxInc")
+    }
+    
+    func darkLightBackground() {
+        backgroundView.backgroundColor = settingsBackgroundColor
     }
 }

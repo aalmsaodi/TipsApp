@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstRun = defaults.bool(forKey: "firstRun")
         
         let lastTimeUsed = defaults.double(forKey: "lastTimeUsed")
-        if CACurrentMediaTime()-lastTimeUsed > 10.0 {
+        if CACurrentMediaTime()-lastTimeUsed > 600 { //erase if not used for more than 10min
             notUsedForLongTime = true
         }
     }

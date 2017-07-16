@@ -13,7 +13,7 @@
 		CE84908E1F0FF12700D00E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE84908D1F0FF12700D00E41 /* Assets.xcassets */; };
 		CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490B41F1014A500D00E41 /* SettingsViewController.swift */; };
 		CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40B1F179A6200B1053E /* Bill.swift */; };
-		CEBBD4101F189F4900B1053E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40F1F189F4900B1053E /* README.md */; };
+		CEBBD4101F189F4900B1053E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CEBBD40F1F189F4900B1053E /* README.md */; };
 		CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -195,7 +195,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = user;
 				TargetAttributes = {
 					CE8490821F0FF12700D00E41 = {
@@ -240,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBBD4101F189F4900B1053E /* README.md in Resources */,
 				CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */,
 				CE84908E1F0FF12700D00E41 /* Assets.xcassets in Resources */,
 				CE84908C1F0FF12700D00E41 /* Main.storyboard in Resources */,
@@ -269,7 +270,6 @@
 			files = (
 				CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */,
 				CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */,
-				CEBBD4101F189F4900B1053E /* README.md in Sources */,
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
 			);
@@ -342,6 +342,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -391,6 +392,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

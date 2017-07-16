@@ -16,6 +16,7 @@ let defaults = UserDefaults.standard
 let clearDefaultsAfter = 600.0 //seconds
 var notUsedForLongTime = false
 var firstRun = true
+var settingsBackgroundColor = UIColor.white
 
 class ViewController: UIViewController {
 
@@ -28,7 +29,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var numPeopleSlider: UISlider!
     @IBOutlet weak var roundingControl: UISegmentedControl!
     @IBOutlet weak var eachShare: UILabel!
-    @IBOutlet weak var maskView: UIView!
+    @IBOutlet var backGroundView: UIView!
+    @IBOutlet weak var topFillerView: UIView!
+    @IBOutlet weak var tipRatesView: UIView!
+    @IBOutlet weak var tipTotalView: UIView!
+    @IBOutlet weak var uperDivider: UIView!
+    @IBOutlet weak var shareView: UIView!
+    @IBOutlet weak var lowerDivider: UIView!
+    @IBOutlet weak var roundingView: UIView!
+    @IBOutlet weak var darkLightButton: UIBarButtonItem!
     
     var numPeople = 1
     let formatter = NumberFormatter()
@@ -42,7 +51,10 @@ class ViewController: UIViewController {
         billField.layer.sublayerTransform = CATransform3DMakeTranslation(-30, 0, 0)
         
         // Setting up the right color of the navigating bar
-        navigationController?.navigationBar.barTintColor = UIColor(red: 102/255, green: 205/255, blue: 255/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 55/255, green: 108/255, blue: 139/255, alpha: 1)
+        
+        navigationController?.navigationBar.barStyle = UIBarStyle.black
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         preparingFrontView()
         
@@ -81,8 +93,8 @@ class ViewController: UIViewController {
        
         calculateBill()
 
-        if (animate){ // Animating and showing "maskView" is needed the first time the app is used
-            UIView.animate(withDuration: 1, animations: {self.maskView.alpha = 0}, completion: nil)
+        if (animate){
+            lowerViewsAlpha(alpha: 1, animate: true)
             animate = false
         }
     }
@@ -99,6 +111,27 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func onDarkLightButton(_ sender: Any) {
+        
+        var color = UIColor.white
+
+        if darkLightButton.title == "Dark" {
+            color = UIColor.black
+            darkLightButton.title = "Light"
+            settingsBackgroundColor = UIColor.black
+        } else {
+            darkLightButton.title = "Dark"
+            settingsBackgroundColor = UIColor.white
+        }
+        
+        backGroundView.backgroundColor = color
+        topFillerView.backgroundColor =  color
+        billField.backgroundColor = color
+        tipRatesView.backgroundColor = color
+        tipTotalView.backgroundColor = color
+        shareView.backgroundColor = color
+        roundingView.backgroundColor = color
+    }
     
     func calculateBill() {
         formatter.numberStyle = .currency
@@ -127,10 +160,11 @@ class ViewController: UIViewController {
         
         if !notUsedForLongTime && defaults.string(forKey: "bill") != nil {
             loadSavedFrontViewDefaultsValues()
-            maskView.alpha = 0
+            lowerViewsAlpha(alpha: 1, animate: false)
+
         }
         
-        if (notUsedForLongTime || firstRun) {
+        if (notUsedForLongTime || firstRun || defaults.string(forKey: "bill") == nil) {
             clearAllSavedUserDefaults()
             
             // Getting the local currency symbol of the device
@@ -139,14 +173,16 @@ class ViewController: UIViewController {
             billField.placeholder = currencySymbol
             billField.text = nil
             
-            maskView.alpha = 1
+            billField.becomeFirstResponder()
+            
+            lowerViewsAlpha(alpha: 0, animate: false)
             animate = true
             
             notUsedForLongTime = false
             firstRun = false
         }
         
-        billField.becomeFirstResponder()
+        
     }
     
     func loadSavedFrontViewDefaultsValues(){
@@ -167,6 +203,26 @@ class ViewController: UIViewController {
         maxNumP = Int(defaults.string(forKey: "numP")!)!
         taxPercentage = Double(defaults.string(forKey: "taxP")!)!
 
+    }
+    
+    
+    func lowerViewsAlpha(alpha:CGFloat, animate:Bool) {
+        
+        if animate {
+            UIView.animate(withDuration: 1, animations: {self.tipRatesView.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.tipTotalView.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.uperDivider.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.shareView.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.lowerDivider.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.roundingView.alpha = alpha}, completion: nil)
+        } else {
+            tipRatesView.alpha = alpha
+            tipTotalView.alpha = alpha
+            uperDivider.alpha = alpha
+            shareView.alpha = alpha
+            lowerDivider.alpha = alpha
+            roundingView.alpha = alpha
+        }
     }
     
     func clearAllSavedUserDefaults(){
