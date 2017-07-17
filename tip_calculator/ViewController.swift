@@ -8,18 +8,10 @@
 
 import UIKit
 
-var tipPercentages = [15, 20, 25]
-var includeTax = false
-var taxPercentage = 7.5
-var maxNumP = 20
 let defaults = UserDefaults.standard
-let clearDefaultsAfter = 600.0 //seconds
-var notUsedForLongTime = false
-var firstRun = true
-var settingsBackgroundColor = UIColor.white
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, CanReceive {
+    
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
@@ -43,7 +35,15 @@ class ViewController: UIViewController {
     let formatter = NumberFormatter()
     var theBill = Bill()
     var animate = true
-
+    var backgroundColor = UIColor.white
+    var firstRun = true
+    var notUsedForLongTime:Bool = false
+    
+    var tipPercentages = [15, 20, 25]
+    var includeTax = false
+    var taxPercentage = 7.5
+    var maxNumP = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,23 +66,20 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         numPeopleSlider.maximumValue = Float(maxNumP)
         
-        if (notUsedForLongTime == false){
-            preparingFrontView()
-            
-            if (defaults.double(forKey: "0") != 0) { //Checking if settings defaults were set up already
-                loadSavedSettingsDefaultsValues()
-            }
+        firstRun = defaults.bool(forKey: "firstRun")
+        
+        if (!notUsedForLongTime && defaults.double(forKey: "0") != 0){
+            loadSavedSettingsDefaultsValues()
         }
         
         calculateBill()
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func onViewTap(_ sender: AnyObject) {
         view.endEditing(true)
     }
@@ -90,9 +87,9 @@ class ViewController: UIViewController {
     @IBAction func billChanged(_ sender: AnyObject) {
         theBill.bill = Double(billField.text!) ?? 0
         defaults.set(Double(billField.text!), forKey: "bill")
-       
+        
         calculateBill()
-
+        
         if (animate){
             lowerViewsAlpha(alpha: 1, animate: true)
             animate = false
@@ -113,25 +110,17 @@ class ViewController: UIViewController {
     
     @IBAction func onDarkLightButton(_ sender: Any) {
         
-        var color = UIColor.white
-
         if darkLightButton.title == "Dark" {
-            color = UIColor.black
+            backgroundColor = UIColor.black
             darkLightButton.title = "Light"
-            settingsBackgroundColor = UIColor.black
         } else {
             darkLightButton.title = "Dark"
-            settingsBackgroundColor = UIColor.white
+            backgroundColor = UIColor.white
         }
         
-        backGroundView.backgroundColor = color
-        topFillerView.backgroundColor =  color
-        billField.backgroundColor = color
-        tipRatesView.backgroundColor = color
-        tipTotalView.backgroundColor = color
-        shareView.backgroundColor = color
-        roundingView.backgroundColor = color
+        backGroundView.backgroundColor = backgroundColor
     }
+    
     
     func calculateBill() {
         formatter.numberStyle = .currency
@@ -144,7 +133,7 @@ class ViewController: UIViewController {
         
         theBill.tipRate = Double(tipPercentages[tipControl.selectedSegmentIndex])
         tipLabel.text = formatter.string(from: NSNumber(value: theBill.calculateTip(includeTax: includeTax)))
-
+        
         let theShare = theBill.calculateShare(numOfPeople: numPeople)
         billPerPerson.text = "Total per person: " + formatter.string(from: NSNumber(value: theShare))!
         
@@ -153,15 +142,40 @@ class ViewController: UIViewController {
         } else {
             eachShare.text = formatter.string(from: NSNumber(value: theShare.rounded(.down)))
         }
-        
     }
-   
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSettings" {
+            
+            let settingsVC = segue.destination as! SettingsViewController
+            settingsVC.settingsBackgroundColor = backgroundColor
+            settingsVC.tipPercentages = self.tipPercentages
+            settingsVC.includeTax = self.includeTax
+            settingsVC.taxPercentage = self.taxPercentage
+            settingsVC.maxNumP = self.maxNumP
+            
+            settingsVC.delegate = self
+        }
+    }
+    
+    func dataReceived(tipPercentages: [Int], includeTax: Bool, taxPercentage: Double, maxNumP: Int) {
+        self.tipPercentages = tipPercentages
+        self.includeTax = includeTax
+        self.taxPercentage = taxPercentage
+        self.maxNumP = maxNumP
+    }
+    
+    
     func preparingFrontView(){
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        notUsedForLongTime = delegate.notUsedForLongTime
         
         if !notUsedForLongTime && defaults.string(forKey: "bill") != nil {
             loadSavedFrontViewDefaultsValues()
             lowerViewsAlpha(alpha: 1, animate: false)
-
+            
         }
         
         if (notUsedForLongTime || firstRun || defaults.string(forKey: "bill") == nil) {
@@ -180,29 +194,9 @@ class ViewController: UIViewController {
             
             notUsedForLongTime = false
             firstRun = false
+            defaults.set(false, forKey: "firstRun")
         }
         
-        
-    }
-    
-    func loadSavedFrontViewDefaultsValues(){
-        
-        billField.text = String(describing: NSNumber(value: defaults.double(forKey: "bill")))
-        theBill.bill = Double(defaults.string(forKey: "bill")!)!
-    }
-    
-    
-    func loadSavedSettingsDefaultsValues(){
-        
-        for i in 0...2 {
-            tipPercentages[i] = Int(defaults.string(forKey: String(i))!)!
-            tipControl.setTitle(String(tipPercentages[i]) + "%", forSegmentAt: i)
-        }
-        
-        includeTax = defaults.bool(forKey: "taxInc")
-        maxNumP = Int(defaults.string(forKey: "numP")!)!
-        taxPercentage = Double(defaults.string(forKey: "taxP")!)!
-
     }
     
     
@@ -223,6 +217,26 @@ class ViewController: UIViewController {
             lowerDivider.alpha = alpha
             roundingView.alpha = alpha
         }
+    }
+    
+    
+    func loadSavedFrontViewDefaultsValues(){
+        
+        billField.text = String(describing: NSNumber(value: defaults.double(forKey: "bill")))
+        theBill.bill = Double(defaults.string(forKey: "bill")!)!
+    }
+    
+    func loadSavedSettingsDefaultsValues(){
+        
+        for i in 0...2 {
+            tipPercentages[i] = Int(defaults.string(forKey: String(i))!)!
+            tipControl.setTitle(String(tipPercentages[i]) + "%", forSegmentAt: i)
+        }
+        
+        includeTax = defaults.bool(forKey: "taxInc")
+        maxNumP = Int(defaults.string(forKey: "numP")!)!
+        taxPercentage = Double(defaults.string(forKey: "taxP")!)!
+        
     }
     
     func clearAllSavedUserDefaults(){

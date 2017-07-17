@@ -36,7 +36,6 @@
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="top" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-gj-MNS">
                                                         <rect key="frame" x="0.0" y="75" width="375" height="74.5"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <color key="textColor" red="0.21568627450980393" green="0.42352941176470588" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -134,7 +133,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="brc-mP-6pI" secondAttribute="trailing" constant="30" id="1cq-Ce-5Rt"/>
                                             <constraint firstAttribute="bottom" secondItem="brc-mP-6pI" secondAttribute="bottom" constant="10" id="9w9-xj-ZWv"/>
@@ -184,7 +182,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="gwQ-HW-bpc" firstAttribute="centerX" secondItem="e3t-ey-aYP" secondAttribute="centerX" id="FEG-1N-1Ac"/>
                                             <constraint firstAttribute="trailing" secondItem="gwQ-HW-bpc" secondAttribute="trailing" constant="30" id="IYZ-0f-jkY"/>
@@ -232,7 +229,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oL7-7A-D3l" secondAttribute="height" multiplier="300:100" id="KfK-Rv-vOp"/>
                                             <constraint firstAttribute="bottom" secondItem="R2r-7r-fCA" secondAttribute="bottom" constant="20" id="eBX-EU-JcB"/>
@@ -266,7 +262,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="DFA-1E-iFw" firstAttribute="top" secondItem="16a-g5-Zjh" secondAttribute="top" id="BcQ-Pm-Vcr"/>
@@ -288,7 +284,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="eMy-Fr-cka" userLabel="Settings">
                             <connections>
-                                <segue destination="TUK-y7-ocj" kind="push" id="hUv-Yk-xaY"/>
+                                <segue destination="TUK-y7-ocj" kind="push" identifier="goToSettings" id="hUv-Yk-xaY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -370,8 +366,8 @@
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-EG-hMp" userLabel="tipPercent_1">
                                                         <rect key="frame" x="0.0" y="0.0" width="98.5" height="30"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         <connections>
@@ -380,8 +376,8 @@
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83M-hU-YX7" userLabel="tipPercent_2">
                                                         <rect key="frame" x="98.5" y="0.0" width="98" height="30"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         <connections>
@@ -390,8 +386,8 @@
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cVT-IX-rGW" userLabel="tipPercent_3">
                                                         <rect key="frame" x="196.5" y="0.0" width="98.5" height="30"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         <connections>
@@ -432,8 +428,8 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="7.5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iJ2-OK-SIc" userLabel="sales_tax">
                                                 <rect key="frame" x="187" y="0.0" width="108" height="35"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <nil key="textColor"/>
+                                                <color key="backgroundColor" red="0.21960784310000001" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
@@ -466,8 +462,8 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-uh-r3k" userLabel="maxPeople">
                                                 <rect key="frame" x="144.5" y="0.0" width="150.5" height="35"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <nil key="textColor"/>
+                                                <color key="backgroundColor" red="0.21960784310000001" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>

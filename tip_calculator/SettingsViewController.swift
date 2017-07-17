@@ -8,8 +8,12 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+protocol CanReceive {
+    func dataReceived(tipPercentages:[Int], includeTax:Bool, taxPercentage:Double, maxNumP:Int)
+}
 
+class SettingsViewController: UIViewController {
+    
     @IBOutlet weak var tipPercent_1: UITextField!
     @IBOutlet weak var tipPercent_2: UITextField!
     @IBOutlet weak var tipPercent_3: UITextField!
@@ -18,17 +22,29 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var MaxnumPeople: UITextField!
     @IBOutlet var backgroundView: UIView!
     
+    var delegate:CanReceive?
+    
+    var tipPercentages = [15, 20, 25]
+    var includeTax = false
+    var taxPercentage = 7.5
+    var maxNumP = 20
+    
+    var settingsBackgroundColor = UIColor.white
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SettingsViewController.goBack))
+        navigationItem.leftBarButtonItem = backButton
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tipPercent_1.text = String(tipPercentages[0])
         tipPercent_2.text = String(tipPercentages[1])
         tipPercent_3.text = String(tipPercentages[2])
-
+        
         taxPercentageField.text = String(taxPercentage)
         MaxnumPeople.text = String(maxNumP)
         taxSwitch.setOn(includeTax, animated: false)
@@ -68,6 +84,11 @@ class SettingsViewController: UIViewController {
     
     @IBAction func tappedLearnMore(_ sender: AnyObject) {
         UIApplication.shared.open(URL(string: "https://en.wikipedia.org/wiki/Gratuity")!, options: [:], completionHandler: nil)
+    }
+    
+    func goBack(){
+        delegate?.dataReceived(tipPercentages: tipPercentages, includeTax: includeTax, taxPercentage: taxPercentage, maxNumP: maxNumP)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func savingSettingsValues() {
