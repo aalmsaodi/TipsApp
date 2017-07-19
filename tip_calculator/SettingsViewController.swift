@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CanReceive {
-    func dataReceived(tipPercentages:[Int], includeTax:Bool, taxPercentage:Double, maxNumP:Int)
+    func dataReceived(theBillData:Bill)
 }
 
 class SettingsViewController: UIViewController {
@@ -23,13 +23,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet var backgroundView: UIView!
     
     var delegate:CanReceive?
-    
-    var tipPercentages = [15, 20, 25]
-    var includeTax = false
-    var taxPercentage = 7.5
-    var maxNumP = 20
-    
-    var settingsBackgroundColor = UIColor.white
+    var theBillData = Bill()
+    var settingsBackgroundColor = color.white
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,21 +36,13 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tipPercent_1.text = String(tipPercentages[0])
-        tipPercent_2.text = String(tipPercentages[1])
-        tipPercent_3.text = String(tipPercentages[2])
-        
-        taxPercentageField.text = String(taxPercentage)
-        MaxnumPeople.text = String(maxNumP)
-        taxSwitch.setOn(includeTax, animated: false)
-        darkLightBackground()
+        updateSettingsView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        savingSettingsValues()
-        maxNumP = Int(MaxnumPeople.text!)!
+        theBillData.maxNumP = Int(MaxnumPeople.text!)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,9 +52,9 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func changedTip(_ sender: AnyObject) {
-        tipPercentages[0] = Int(tipPercent_1.text!)!
-        tipPercentages[1] = Int(tipPercent_2.text!)!
-        tipPercentages[2] = Int(tipPercent_3.text!)!
+        theBillData.tipPercentages[0] = Int(tipPercent_1.text!)!
+        theBillData.tipPercentages[1] = Int(tipPercent_2.text!)!
+        theBillData.tipPercentages[2] = Int(tipPercent_3.text!)!
     }
     
     @IBAction func onTap(_ sender: AnyObject) {
@@ -75,11 +62,11 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func changedTax(_ sender: AnyObject) {
-        taxPercentage = Double(taxPercentageField.text!)!
+        theBillData.taxPercentage = Double(taxPercentageField.text!)!
     }
     
     @IBAction func onExcludeTax(_ sender: AnyObject) {
-        includeTax = taxSwitch.isOn
+        theBillData.includeTax = taxSwitch.isOn
     }
     
     @IBAction func tappedLearnMore(_ sender: AnyObject) {
@@ -87,20 +74,26 @@ class SettingsViewController: UIViewController {
     }
     
     func goBack(){
-        delegate?.dataReceived(tipPercentages: tipPercentages, includeTax: includeTax, taxPercentage: taxPercentage, maxNumP: maxNumP)
+        delegate?.dataReceived(theBillData: theBillData)
         _ = navigationController?.popViewController(animated: true)
     }
     
-    func savingSettingsValues() {
-        defaults.set(tipPercent_1.text, forKey: "0")
-        defaults.set(tipPercent_2.text, forKey: "1")
-        defaults.set(tipPercent_3.text, forKey: "2")
-        defaults.set(taxPercentageField.text, forKey: "taxP")
-        defaults.set(MaxnumPeople.text, forKey: "numP")
-        defaults.set(taxSwitch.isOn, forKey: "taxInc")
+    func updateSettingsView(){
+        tipPercent_1.text = String(theBillData.tipPercentages[0])
+        tipPercent_2.text = String(theBillData.tipPercentages[1])
+        tipPercent_3.text = String(theBillData.tipPercentages[2])
+        
+        taxPercentageField.text = String(theBillData.taxPercentage)
+        MaxnumPeople.text = String(theBillData.maxNumP)
+        taxSwitch.setOn(theBillData.includeTax, animated: false)
+        
+        if settingsBackgroundColor == color.black {
+            backgroundView.backgroundColor = .black
+        }
+        else {
+            backgroundView.backgroundColor = .white
+        }
+        
     }
     
-    func darkLightBackground() {
-        backgroundView.backgroundColor = settingsBackgroundColor
-    }
 }
