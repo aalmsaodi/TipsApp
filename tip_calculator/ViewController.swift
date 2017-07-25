@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreML
+import Vision
 
 let defaults = UserDefaults.standard
 
@@ -16,7 +18,7 @@ enum color:Int {
     case white
 }
 
-class ViewController: UIViewController, CanReceive {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CanReceive {
     
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -28,14 +30,14 @@ class ViewController: UIViewController, CanReceive {
     @IBOutlet weak var roundingControl: UISegmentedControl!
     @IBOutlet weak var eachShare: UILabel!
     @IBOutlet var backGroundView: UIView!
-    @IBOutlet weak var topFillerView: UIView!
     @IBOutlet weak var tipRatesView: UIView!
     @IBOutlet weak var tipTotalView: UIView!
     @IBOutlet weak var uperDivider: UIView!
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var lowerDivider: UIView!
     @IBOutlet weak var roundingView: UIView!
-    @IBOutlet weak var darkLightButton: UIBarButtonItem!
+    //    @IBOutlet weak var darkLightButton: UIBarButtonItem!
+    @IBOutlet weak var smartCameraButton: UIBarButtonItem!
     @IBOutlet weak var topViewConstraintRatio: NSLayoutConstraint!
     
     let formatter = NumberFormatter()
@@ -45,9 +47,26 @@ class ViewController: UIViewController, CanReceive {
     var firstRun = true
     var notUsedForLongTime:Bool = false
     let clearDefaultsAfter = 600.0 //seconds
+    let imagePicker = UIImagePickerController()
+    
+    let fastFoodTerms = ["burger", "Ketchup", "fries", "sandwich", "burrito", "carry-out", "soda", "coke", "pepsi", "hotdog", "smoothie", "icecream", "sub", "nuggets", "bacon"]
+    let bartendersTerms = ["beer", "wine", "beverage", "alcoholic", "alcohol", "vodka", "glass", "shot"]
+    let resturantTerms = ["food", "spoon", "plate", "bowl", "menu", "meat", "meal", "tea", "coffee", "bagel", "muffin", "bread", "cup", "juice"]
+    let hotelTerms = ["room", "bed", "hotel", "pool", "receptionist"]
+    let beautyTerms = ["Hair", "barber", "nails", "spa", "facial", "nails", "style", "massage"]
+    let taxiTerms = ["taxi", "limo", "cab", "driver", "uber", "lyft", "carpool", "car", "bus", "transportation", "parking", "ride"]
+    let laborTerms = ["mechanic", "automotive", "mover", "furniture", "applience"]
+    
+    var categories = [String: [String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+        
+        categories = ["Fast Food": fastFoodTerms, "Bartenders": bartendersTerms, "Resturants": resturantTerms, "Hotel Service": hotelTerms, "Beauty & Style": beautyTerms, "Transportation": taxiTerms, "Labor Service": laborTerms]
         
         initialConfiguration()
         preparingFrontView()
@@ -73,6 +92,53 @@ class ViewController: UIViewController, CanReceive {
         view.endEditing(true)
     }
     
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            guard let ciimage = CIImage(image: imagePicked) else {
+                fatalError("Could not convert into CIImage")
+            }
+            
+            detect(image: ciimage)
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func detect(image: CIImage) {
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
+             fatalError("Loading CoreML Model failed")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let results = request.results as? [VNClassificationObservation] else {
+                fatalError("Model failed to process image")
+            }
+            
+            if let firstResult = results.first {
+                for (nameOfService, serviceKeyWords) in self.categories {
+                    if firstResult.identifier.containsInArray(arr: serviceKeyWords) {
+                        print(nameOfService)
+                    }
+                }
+            }
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: image)
+        
+        do {
+            try handler.perform([request])
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    @IBAction func smartCameraTapped(_ sender: UIBarButtonItem) {
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
     
     //*********************************************************************************
     //# MARK: - Bill Calculation
@@ -143,20 +209,20 @@ class ViewController: UIViewController, CanReceive {
     //*********************************************************************************
     //# MARK: - Front View and Appearance
     //*********************************************************************************
-    @IBAction func onDarkLightButton(_ sender: Any) {
-        
-        if darkLightButton.title == "Dark" {
-            backgroundColor = .black
-            backGroundView.backgroundColor = .black
-            darkLightButton.title = "Light"
-        } else {
-            darkLightButton.title = "Dark"
-            backgroundColor = .white
-            backGroundView.backgroundColor = .white
-        }
-    }
+//    @IBAction func onDarkLightButton(_ sender: Any) {
+//        
+//        if darkLightButton.title == "Dark" {
+//            backgroundColor = .black
+//            backGroundView.backgroundColor = .black
+//            darkLightButton.title = "Light"
+//        } else {
+//            darkLightButton.title = "Dark"
+//            backgroundColor = .white
+//            backGroundView.backgroundColor = .white
+//        }
+//    }
     
-    func preparingFrontView(){
+    @objc func preparingFrontView(){
         loadSavedData()
         
         if !notUsedForLongTime && defaults.data(forKey: "theBillData") != nil {
@@ -250,7 +316,7 @@ class ViewController: UIViewController, CanReceive {
             if backgroundColor == color.black { //white is the default color - no need to set
                 backGroundView.backgroundColor = .black
                 backgroundColor = .black
-                darkLightButton.title = "Light"
+//                darkLightButton.title = "Light"
             }
 
         }
@@ -260,7 +326,7 @@ class ViewController: UIViewController, CanReceive {
         
     }
     
-    func saveData() {
+    @objc func saveData() {
         let encodedData:Data = NSKeyedArchiver.archivedData(withRootObject:theBillData)
         defaults.set(encodedData, forKey: "theBillData")
         defaults.set(CACurrentMediaTime(), forKey: "lastTimeUsed")

@@ -73,7 +73,7 @@ class SettingsViewController: UIViewController {
         UIApplication.shared.open(URL(string: "https://en.wikipedia.org/wiki/Gratuity")!, options: [:], completionHandler: nil)
     }
     
-    func goBack(){
+    @objc func goBack(){
         delegate?.dataReceived(theBillData: theBillData)
         _ = navigationController?.popViewController(animated: true)
     }

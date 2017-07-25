@@ -7,43 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D91D8F02159C4625C073C1A /* Pods_TipsAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DACD7F02834BC20ABD73A0A /* Pods_TipsAPP.framework */; };
+		CE09F1E31F26E6C600B60F12 /* String+ContainsInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09F1E21F26E6C600B60F12 /* String+ContainsInArray.swift */; };
 		CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490861F0FF12700D00E41 /* AppDelegate.swift */; };
 		CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490881F0FF12700D00E41 /* ViewController.swift */; };
 		CE84908C1F0FF12700D00E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE84908A1F0FF12700D00E41 /* Main.storyboard */; };
 		CE84908E1F0FF12700D00E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE84908D1F0FF12700D00E41 /* Assets.xcassets */; };
 		CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490B41F1014A500D00E41 /* SettingsViewController.swift */; };
+		CE850BDC1F2671C400C86662 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CE850BDB1F2671C400C86662 /* Inceptionv3.mlmodel */; };
 		CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBD40B1F179A6200B1053E /* Bill.swift */; };
 		CEBBD4101F189F4900B1053E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CEBBD40F1F189F4900B1053E /* README.md */; };
 		CEBFA3EB1F14A82E00C18528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBFA3E91F14A82E00C18528 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CE8490981F0FF12700D00E41 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE84907B1F0FF12700D00E41 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE8490821F0FF12700D00E41;
-			remoteInfo = tip_calculator;
-		};
-		CE8490A31F0FF12700D00E41 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE84907B1F0FF12700D00E41 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE8490821F0FF12700D00E41;
-			remoteInfo = tip_calculator;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		1DACD7F02834BC20ABD73A0A /* Pods_TipsAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipsAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93474339BC35AF4DA8DFE8AD /* Pods-TipsAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipsAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipsAPP/Pods-TipsAPP.release.xcconfig"; sourceTree = "<group>"; };
+		A02855437B71ECFA40109E0D /* Pods-TipsAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipsAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipsAPP/Pods-TipsAPP.debug.xcconfig"; sourceTree = "<group>"; };
+		CE09F1E21F26E6C600B60F12 /* String+ContainsInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ContainsInArray.swift"; sourceTree = "<group>"; };
 		CE8490831F0FF12700D00E41 /* TipsAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipsAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8490861F0FF12700D00E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8490881F0FF12700D00E41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE84908B1F0FF12700D00E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE84908D1F0FF12700D00E41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE8490921F0FF12700D00E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE8490971F0FF12700D00E41 /* TipsAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE8490A21F0FF12700D00E41 /* TipsAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8490B41F1014A500D00E41 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE850BDB1F2671C400C86662 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		CEBBD40B1F179A6200B1053E /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		CEBBD40F1F189F4900B1053E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEBFA3EA1F14A82E00C18528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,32 +43,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE8490941F0FF12700D00E41 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE84909F1F0FF12700D00E41 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				7D91D8F02159C4625C073C1A /* Pods_TipsAPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57263A7CAB646951224D86A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DACD7F02834BC20ABD73A0A /* Pods_TipsAPP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0D827A6E65AD32AE8F3D163 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A02855437B71ECFA40109E0D /* Pods-TipsAPP.debug.xcconfig */,
+				93474339BC35AF4DA8DFE8AD /* Pods-TipsAPP.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE84907A1F0FF12700D00E41 = {
 			isa = PBXGroup;
 			children = (
 				CEBBD40F1F189F4900B1053E /* README.md */,
 				CE8490851F0FF12700D00E41 /* tip_calculator */,
 				CE8490841F0FF12700D00E41 /* Products */,
+				B0D827A6E65AD32AE8F3D163 /* Pods */,
+				57263A7CAB646951224D86A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,8 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8490831F0FF12700D00E41 /* TipsAPP.app */,
-				CE8490971F0FF12700D00E41 /* TipsAPPTests.xctest */,
-				CE8490A21F0FF12700D00E41 /* TipsAPPUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +93,7 @@
 				CEBBD4041F17301700B1053E /* Controller */,
 				CEBBD4051F17304300B1053E /* View */,
 				CE8490921F0FF12700D00E41 /* Info.plist */,
+				CE850BDB1F2671C400C86662 /* Inceptionv3.mlmodel */,
 			);
 			path = tip_calculator;
 			sourceTree = "<group>";
@@ -128,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CEBBD40B1F179A6200B1053E /* Bill.swift */,
+				CE09F1E21F26E6C600B60F12 /* String+ContainsInArray.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -139,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8490AB1F0FF12700D00E41 /* Build configuration list for PBXNativeTarget "TipsAPP" */;
 			buildPhases = (
+				30CCBC895AFD1789EA4AB0DC /* [CP] Check Pods Manifest.lock */,
 				CE84907F1F0FF12700D00E41 /* Sources */,
 				CE8490801F0FF12700D00E41 /* Frameworks */,
 				CE8490811F0FF12700D00E41 /* Resources */,
+				A69A87F8BD8D5255A1BD22BC /* [CP] Embed Pods Frameworks */,
+				FB960304432464018A81852A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,42 +150,6 @@
 			productReference = CE8490831F0FF12700D00E41 /* TipsAPP.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE8490961F0FF12700D00E41 /* TipsAPPTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE8490AE1F0FF12700D00E41 /* Build configuration list for PBXNativeTarget "TipsAPPTests" */;
-			buildPhases = (
-				CE8490931F0FF12700D00E41 /* Sources */,
-				CE8490941F0FF12700D00E41 /* Frameworks */,
-				CE8490951F0FF12700D00E41 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE8490991F0FF12700D00E41 /* PBXTargetDependency */,
-			);
-			name = TipsAPPTests;
-			productName = tip_calculatorTests;
-			productReference = CE8490971F0FF12700D00E41 /* TipsAPPTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CE8490A11F0FF12700D00E41 /* TipsAPPUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE8490B11F0FF12700D00E41 /* Build configuration list for PBXNativeTarget "TipsAPPUITests" */;
-			buildPhases = (
-				CE84909E1F0FF12700D00E41 /* Sources */,
-				CE84909F1F0FF12700D00E41 /* Frameworks */,
-				CE8490A01F0FF12700D00E41 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE8490A41F0FF12700D00E41 /* PBXTargetDependency */,
-			);
-			name = TipsAPPUITests;
-			productName = tip_calculatorUITests;
-			productReference = CE8490A21F0FF12700D00E41 /* TipsAPPUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,23 +157,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = user;
 				TargetAttributes = {
 					CE8490821F0FF12700D00E41 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EGLENF5Q49;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
-					};
-					CE8490961F0FF12700D00E41 = {
-						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = CE8490821F0FF12700D00E41;
-					};
-					CE8490A11F0FF12700D00E41 = {
-						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = CE8490821F0FF12700D00E41;
 					};
 				};
 			};
@@ -229,8 +182,6 @@
 			projectRoot = "";
 			targets = (
 				CE8490821F0FF12700D00E41 /* TipsAPP */,
-				CE8490961F0FF12700D00E41 /* TipsAPPTests */,
-				CE8490A11F0FF12700D00E41 /* TipsAPPUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -247,62 +198,71 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE8490951F0FF12700D00E41 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE8490A01F0FF12700D00E41 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30CCBC895AFD1789EA4AB0DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A69A87F8BD8D5255A1BD22BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TipsAPP/Pods-TipsAPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB960304432464018A81852A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TipsAPP/Pods-TipsAPP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE84907F1F0FF12700D00E41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE850BDC1F2671C400C86662 /* Inceptionv3.mlmodel in Sources */,
 				CEBBD40C1F179A6200B1053E /* Bill.swift in Sources */,
 				CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */,
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
+				CE09F1E31F26E6C600B60F12 /* String+ContainsInArray.swift in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE8490931F0FF12700D00E41 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE84909E1F0FF12700D00E41 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CE8490991F0FF12700D00E41 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE8490821F0FF12700D00E41 /* TipsAPP */;
-			targetProxy = CE8490981F0FF12700D00E41 /* PBXContainerItemProxy */;
-		};
-		CE8490A41F0FF12700D00E41 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE8490821F0FF12700D00E41 /* TipsAPP */;
-			targetProxy = CE8490A31F0FF12700D00E41 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE84908A1F0FF12700D00E41 /* Main.storyboard */ = {
@@ -333,7 +293,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -341,7 +303,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -365,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -383,7 +349,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -391,7 +359,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -409,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -419,6 +391,7 @@
 		};
 		CE8490AC1F0FF12700D00E41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A02855437B71ECFA40109E0D /* Pods-TipsAPP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EGLENF5Q49;
@@ -426,12 +399,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CE8490AD1F0FF12700D00E41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93474339BC35AF4DA8DFE8AD /* Pods-TipsAPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EGLENF5Q49;
@@ -439,61 +414,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		CE8490AF1F0FF12700D00E41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = tip_calculatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculatorTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TipsAPP.app/TipsAPP";
-			};
-			name = Debug;
-		};
-		CE8490B01F0FF12700D00E41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = tip_calculatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculatorTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TipsAPP.app/TipsAPP";
-			};
-			name = Release;
-		};
-		CE8490B21F0FF12700D00E41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = tip_calculatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculatorUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = tip_calculator;
-			};
-			name = Debug;
-		};
-		CE8490B31F0FF12700D00E41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = tip_calculatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ysh.tip-calculatorUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = tip_calculator;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -514,24 +436,6 @@
 			buildConfigurations = (
 				CE8490AC1F0FF12700D00E41 /* Debug */,
 				CE8490AD1F0FF12700D00E41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE8490AE1F0FF12700D00E41 /* Build configuration list for PBXNativeTarget "TipsAPPTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE8490AF1F0FF12700D00E41 /* Debug */,
-				CE8490B01F0FF12700D00E41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE8490B11F0FF12700D00E41 /* Build configuration list for PBXNativeTarget "TipsAPPUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE8490B21F0FF12700D00E41 /* Debug */,
-				CE8490B31F0FF12700D00E41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
