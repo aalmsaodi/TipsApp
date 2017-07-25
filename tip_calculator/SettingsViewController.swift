@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CanReceive {
-    func dataReceived(theBillData:Bill)
+    func dataReceived(theBillData:Bill, backgroundColor:color)
 }
 
 class SettingsViewController: UIViewController {
@@ -21,10 +21,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var taxSwitch: UISwitch!
     @IBOutlet weak var MaxnumPeople: UITextField!
     @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var darkLightButton: UIBarButtonItem!
     
     var delegate:CanReceive?
     var theBillData = Bill()
-    var settingsBackgroundColor = color.white
+    var backgroundColor = color.white
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +74,20 @@ class SettingsViewController: UIViewController {
         UIApplication.shared.open(URL(string: "https://en.wikipedia.org/wiki/Gratuity")!, options: [:], completionHandler: nil)
     }
     
+    @IBAction func lightDarkTapped(_ sender: UIBarButtonItem) {
+        if darkLightButton.title == "Dark" {
+            backgroundColor = .black
+            backgroundView.backgroundColor = .black
+            darkLightButton.title = "Light"
+        } else {
+            darkLightButton.title = "Dark"
+            backgroundColor = .white
+            backgroundView.backgroundColor = .white
+        }
+    }
+    
     @objc func goBack(){
-        delegate?.dataReceived(theBillData: theBillData)
+        delegate?.dataReceived(theBillData:theBillData, backgroundColor:backgroundColor)
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -87,11 +100,13 @@ class SettingsViewController: UIViewController {
         MaxnumPeople.text = String(theBillData.maxNumP)
         taxSwitch.setOn(theBillData.includeTax, animated: false)
         
-        if settingsBackgroundColor == color.black {
+        if backgroundColor == color.black {
             backgroundView.backgroundColor = .black
+            darkLightButton.title = "Light"
         }
         else {
             backgroundView.backgroundColor = .white
+            darkLightButton.title = "Dark"
         }
         
     }

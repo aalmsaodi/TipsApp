@@ -9,9 +9,9 @@
 import UIKit
 import CoreML
 import Vision
+import SVProgressHUD
 
 let defaults = UserDefaults.standard
-
 
 enum color:Int {
     case black
@@ -45,19 +45,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var animate = true
     var backgroundColor:color = color.white
     var firstRun = true
+    var afterInstallation = true
     var notUsedForLongTime:Bool = false
     let clearDefaultsAfter = 600.0 //seconds
     let imagePicker = UIImagePickerController()
     
     let fastFoodTerms = ["burger", "Ketchup", "fries", "sandwich", "burrito", "carry-out", "soda", "coke", "pepsi", "hotdog", "smoothie", "icecream", "sub", "nuggets", "bacon"]
-    let bartendersTerms = ["beer", "wine", "beverage", "alcoholic", "alcohol", "vodka", "glass", "shot"]
-    let resturantTerms = ["food", "spoon", "plate", "bowl", "menu", "meat", "meal", "tea", "coffee", "bagel", "muffin", "bread", "cup", "juice"]
+    let bartendersTerms = ["beer", "wine", "alcoholic", "alcohol", "vodka", "glass", "shot"]
+    let resturantTerms = ["food", "spoon", "plate", "bowl", "menu", "meat", "meal", "tea", "coffee", "bagel", "muffin", "bread", "cup", "juice", "beverage"]
     let hotelTerms = ["room", "bed", "hotel", "pool", "receptionist"]
     let beautyTerms = ["Hair", "barber", "nails", "spa", "facial", "nails", "style", "massage"]
-    let taxiTerms = ["taxi", "limo", "cab", "driver", "uber", "lyft", "carpool", "car", "bus", "transportation", "parking", "ride"]
+    let taxiTerms = ["taxi", "limo", "cab", "driver", "uber", "lyft", "carpool", "car", "bus", "transportation", "parking", "ride", "keys"]
     let laborTerms = ["mechanic", "automotive", "mover", "furniture", "applience"]
     
-    var categories = [String: [String]]()
+    let fastFoodTip = "Tip is not expected for fast food resturants unless special service was provided"
+    let bartendersTip = "Tip for bartenders should be between 15%-20%"
+    let resturantTip = "Tip in resturants tipcally is between 15%-20%"
+    let hotelTip = "Tip for Hotel Room service typically is included in the price already. If not, 15-20%. Also no tip is expected for Hotel Housekeeping, $1-$2 per person per night."
+    let beautyTip = "Tip for beauty and style is 10%-20%"
+    let taxiTip = "Tip for taxi typically is 15%-20%. Shuttle Drivers and Parking Attendant can also be given $1-$3"
+    let laborTip = "Not expected, Or $5, $10, $20 each depending on the amount"
+    
+    var tipRecommendationMessage = ""
+
+    var serviceCategories = [String: [String]]()
+    var tipRecommendations = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +78,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
         
-        categories = ["Fast Food": fastFoodTerms, "Bartenders": bartendersTerms, "Resturants": resturantTerms, "Hotel Service": hotelTerms, "Beauty & Style": beautyTerms, "Transportation": taxiTerms, "Labor Service": laborTerms]
+        serviceCategories = ["Fast Food": fastFoodTerms, "Bartenders": bartendersTerms, "Resturants": resturantTerms, "Hotel Service": hotelTerms, "Beauty & Style": beautyTerms, "Transportation": taxiTerms, "Labor Service": laborTerms]
+        
+        tipRecommendations = ["Fast Food": fastFoodTip, "Bartenders": bartendersTip, "Resturants": resturantTip, "Hotel Service": hotelTip, "Beauty & Style": beautyTip, "Transportation": taxiTip, "Labor Service": laborTip]
         
         initialConfiguration()
         preparingFrontView()
@@ -83,27 +97,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         calculateBill()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func onViewTap(_ sender: AnyObject) {
         view.endEditing(true)
     }
     
-
+    //*********************************************************************************
+    //# MARK: - Image taking and CoreML detecting using Inception3 Model
+    //*********************************************************************************
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            SVProgressHUD.show(withStatus: "Detecting the Item")
+            
             guard let ciimage = CIImage(image: imagePicked) else {
                 fatalError("Could not convert into CIImage")
             }
-            
             detect(image: ciimage)
         }
         
         imagePicker.dismiss(animated: true, completion: nil)
+        SVProgressHUD.dismiss()
+        
+        if tipRecommendationMessage == "" {
+            tipRecommendationMessage = "Unfortunatly TipsApp was unable to detect the service/product you are purchasing"
+        }
+        diesplayMessageToUser(title: "Smart Tip Recommendation", message: tipRecommendationMessage)
     }
     
     func detect(image: CIImage) {
@@ -117,9 +137,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             
             if let firstResult = results.first {
-                for (nameOfService, serviceKeyWords) in self.categories {
+                for (nameOfService, serviceKeyWords) in self.serviceCategories {
                     if firstResult.identifier.containsInArray(arr: serviceKeyWords) {
-                        print(nameOfService)
+                        self.tipRecommendationMessage = self.tipRecommendations[nameOfService] ?? ""
                     }
                 }
             }
@@ -137,7 +157,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func smartCameraTapped(_ sender: UIBarButtonItem) {
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func diesplayMessageToUser(title:String, message:String) {
+        let dialog = UIAlertController(title: title,
+                                       message: message,
+                                       preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction.init(title: "OK", style: .cancel) {
+            UIAlertAction in
+            if ("Smart Tip Feature" == title){
+                self.billField.becomeFirstResponder()
+            }
+        }
         
+        dialog.addAction(okAction)
+        self.present(dialog, animated: false, completion: nil)
     }
     
     //*********************************************************************************
@@ -153,7 +187,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             lowerViewsAlpha(alpha: 1, animate: true)
             
             UIView.animate(withDuration: 1, animations: {
-                self.topViewConstraintRatio.constant = 150
+                self.topViewConstraintRatio.constant = 130
                 self.view.layoutIfNeeded()
             })
         }
@@ -190,45 +224,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //*********************************************************************************
-    //# MARK: - Segue and Protocol Confirmation
+    //# MARK: - Segue and Sending and Recieving Data between VCs
     //*********************************************************************************
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettings" {
             
             let settingsVC = segue.destination as! SettingsViewController
+            settingsVC.backgroundColor = backgroundColor
             settingsVC.theBillData = theBillData
-            settingsVC.settingsBackgroundColor = backgroundColor
             settingsVC.delegate = self
         }
     }
     
-    func dataReceived(theBillData:Bill) {
+    func dataReceived(theBillData:Bill, backgroundColor:color) {
         self.theBillData = theBillData
+        self.backgroundColor = backgroundColor
     }
     
     //*********************************************************************************
     //# MARK: - Front View and Appearance
     //*********************************************************************************
-//    @IBAction func onDarkLightButton(_ sender: Any) {
-//        
-//        if darkLightButton.title == "Dark" {
-//            backgroundColor = .black
-//            backGroundView.backgroundColor = .black
-//            darkLightButton.title = "Light"
-//        } else {
-//            darkLightButton.title = "Dark"
-//            backgroundColor = .white
-//            backGroundView.backgroundColor = .white
-//        }
-//    }
-    
     @objc func preparingFrontView(){
         loadSavedData()
         
-        if !notUsedForLongTime && defaults.data(forKey: "theBillData") != nil {
+        if (!notUsedForLongTime && defaults.data(forKey: "theBillData") != nil) {
             lowerViewsAlpha(alpha: 1, animate: false)
-            self.topViewConstraintRatio.constant = 150
+            self.topViewConstraintRatio.constant = 130
             self.view.layoutIfNeeded()
+            
+            billField.becomeFirstResponder()
+            billField.placeholder = Locale.current.currencySymbol!
         }
         
         if (notUsedForLongTime || firstRun || theBillData.bill == 0) {
@@ -243,10 +268,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             notUsedForLongTime = false
             firstRun = false
             defaults.set(false, forKey: "firstRun")
+            
+            billField.becomeFirstResponder()
+            billField.placeholder = Locale.current.currencySymbol!
         }
         
-        billField.becomeFirstResponder()
-        billField.placeholder = Locale.current.currencySymbol!
+        if afterInstallation {
+            diesplayMessageToUser(title: "Smart Tip Feature", message: "Use the Camera button on the top left corner of the app to get a recommendation about how much your tip should be for the service/product you are purchasing")
+            
+            afterInstallation = false
+            defaults.set(false, forKey: "afterInstallation")
+        }
     }
     
     
@@ -282,6 +314,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
 
         numPeopleSlider.maximumValue = Float(theBillData.maxNumP)
+        
+        if backgroundColor == .black {
+            backGroundView.backgroundColor = .black
+        } else {
+            backGroundView.backgroundColor = .white
+        }
     }
     
     func initialConfiguration(){
@@ -301,6 +339,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func loadSavedData(){
         if(defaults.object(forKey: "lastTimeUsed") != nil){
             firstRun = defaults.bool(forKey: "firstRun")
+            afterInstallation = defaults.bool(forKey: "afterInstallation")
             
             let lastTimeUsed = defaults.double(forKey: "lastTimeUsed")
             if CACurrentMediaTime()-lastTimeUsed > clearDefaultsAfter {
@@ -316,7 +355,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if backgroundColor == color.black { //white is the default color - no need to set
                 backGroundView.backgroundColor = .black
                 backgroundColor = .black
-//                darkLightButton.title = "Light"
             }
 
         }

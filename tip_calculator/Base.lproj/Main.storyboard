@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -564,10 +563,17 @@
                             <outletCollection property="gestureRecognizers" destination="Da0-qS-CvI" appends="YES" id="vFi-cQ-Is9"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="xfB-LH-qn6"/>
+                    <navigationItem key="navigationItem" title="Settings" id="xfB-LH-qn6">
+                        <barButtonItem key="rightBarButtonItem" title="Dark" id="k3F-or-yUN">
+                            <connections>
+                                <action selector="lightDarkTapped:" destination="TUK-y7-ocj" id="D4e-39-AZg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="MaxnumPeople" destination="QUT-uh-r3k" id="lAB-fa-R8z"/>
                         <outlet property="backgroundView" destination="nbo-WL-YiL" id="v0r-cV-6q6"/>
+                        <outlet property="darkLightButton" destination="k3F-or-yUN" id="6eI-h0-qda"/>
                         <outlet property="taxPercentageField" destination="iJ2-OK-SIc" id="TET-bM-MFr"/>
                         <outlet property="taxSwitch" destination="kFF-aK-40P" id="AWw-UT-7SP"/>
                         <outlet property="tipPercent_1" destination="UJK-EG-hMp" id="VvL-vc-ltd"/>

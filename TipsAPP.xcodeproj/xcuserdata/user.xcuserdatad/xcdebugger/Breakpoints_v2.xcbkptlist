@@ -9,92 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tip_calculator/SettingsViewController.swift"
-            timestampString = "522611539.532569"
+            filePath = "tip_calculator/ViewController.swift"
+            timestampString = "522708878.64479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "tappedLearnMore(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tip_calculator/SettingsViewController.swift"
-            timestampString = "522611539.532752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "SettingsViewController"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tips.SettingsViewController.numPeople.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
-                  moduleName = "Tips"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/ios_projects_2017/tip_calculator/tip_calculator/SettingsViewController.swift"
-                  timestampString = "521425272.689416"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tips.SettingsViewController.numPeople.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
-                  moduleName = "Tips"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/ios_projects_2017/tip_calculator/tip_calculator/SettingsViewController.swift"
-                  timestampString = "521425272.691032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "42">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tips.SettingsViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Tips.SettingsViewController"
-                  moduleName = "Tips"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/ios_projects_2017/tip_calculator/tip_calculator/SettingsViewController.swift"
-                  timestampString = "521425272.692743"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "401">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tips.SettingsViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Tips.SettingsViewController&gt;"
-                  moduleName = "Tips"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/ios_projects_2017/tip_calculator/tip_calculator/SettingsViewController.swift"
-                  timestampString = "521425272.694354"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "294">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.06286"
+            timestampString = "522708878.64628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -120,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.064458"
+            timestampString = "522708878.647519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -136,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.065637"
+            timestampString = "522708878.64879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -152,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.066772"
+            timestampString = "522708878.650009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.067895"
+            timestampString = "522708878.651171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -184,13 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.069029"
+            timestampString = "522708878.65252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,13 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.07018"
+            timestampString = "522708878.653596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -216,13 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.071565"
+            timestampString = "522708878.654619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -232,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.072985"
+            timestampString = "522708878.655643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -248,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.074323"
+            timestampString = "522708878.656682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.076162"
+            timestampString = "522708878.657893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -280,29 +202,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.077994"
+            timestampString = "522708878.659187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.079528"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,22 +225,6 @@
             endingLineNumber = "75"
             landmarkName = "calculateTip()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tip_calculator/SettingsViewController.swift"
-            timestampString = "522611539.552586"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "SettingsViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -456,13 +346,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.080945"
+            timestampString = "522708878.660555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -472,13 +362,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.082232"
+            timestampString = "522708878.661772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "clearSavedBillOnly()"
-            landmarkType = "7">
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -488,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tip_calculator/ViewController.swift"
-            timestampString = "522645199.083419"
+            timestampString = "522708878.662971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

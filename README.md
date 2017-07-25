@@ -4,7 +4,7 @@
 
 Submitted by: **Akrm Almsaodi**
 
-Time spent: **+25** hours spent in total
+Time spent: **+30** hours spent in total
 
 ## User Stories
 
@@ -22,6 +22,8 @@ The following **Optional** features are implemented:
 
 The following **Additional** features are implemented:
 
+* [x] Smart Tip Advisor: Using CoreML to detect product through vision detection using Inceptionv3 Model
+* [x] Using SVProgressHUD Pod to improve user experience while processing and detecting captured pics
 * [x] The app looks right in all screen sizes in Portrait orientation.
 * [x] Dark and Light themes
 * [x] The ability to dynamically split the bill between multiple payers
@@ -29,12 +31,12 @@ The following **Additional** features are implemented:
 * [x] The option to include/exclude the sales tax in calculating the tip
 * [x] The ability to change the 3 default tip percentages in settings
 * [x] The ability to change the maximum default number of payers
-* [x] External resource to learn more about the appropriate tip percentage
+* [x] Link to external resource to learn more about the appropriate tip percentages
 
-**Note:** The app was implemented in MVC model using Swift OOP 
+**Note:** I purposely tried to practice in this project as many new concepts as possible such as class extentions, protocols, segues, Cocoapods, closures, CoreML, Vision, OOP, and MVC Model and more! For this reason, the project might look more complicated than it should be :)
 
 ## Video Walkthrough 
 
-<img src='https://media.giphy.com/media/3ohzgVX8BzabKX2gla/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/xUn3CkZRMm0oOYgJKE/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with GIF Brewery 3 (http://gifbrewery.com).
