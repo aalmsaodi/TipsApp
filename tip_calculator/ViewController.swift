@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  tip_calculator
+//  TipsApp
 //
-//  Created by user on 7/7/17.
+//  Created by Akrm Almsaodi on 7/7/17.
 //  Copyright © 2017 user. All rights reserved.
 //
 
@@ -10,8 +10,6 @@ import UIKit
 import CoreML
 import Vision
 import SVProgressHUD
-
-let defaults = UserDefaults.standard
 
 enum color:Int {
     case black
@@ -30,13 +28,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var roundingControl: UISegmentedControl!
     @IBOutlet weak var eachShare: UILabel!
     @IBOutlet var backGroundView: UIView!
-    @IBOutlet weak var tipRatesView: UIView!
     @IBOutlet weak var tipTotalView: UIView!
     @IBOutlet weak var uperDivider: UIView!
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var lowerDivider: UIView!
     @IBOutlet weak var roundingView: UIView!
-    //    @IBOutlet weak var darkLightButton: UIBarButtonItem!
     @IBOutlet weak var smartCameraButton: UIBarButtonItem!
     @IBOutlet weak var topViewConstraintRatio: NSLayoutConstraint!
     
@@ -49,27 +45,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var notUsedForLongTime:Bool = false
     let clearDefaultsAfter = 600.0 //seconds
     let imagePicker = UIImagePickerController()
-    
-    let fastFoodTerms = ["burger", "Ketchup", "fries", "sandwich", "burrito", "carry-out", "soda", "coke", "pepsi", "hotdog", "smoothie", "icecream", "sub", "nuggets", "bacon"]
-    let bartendersTerms = ["beer", "wine", "alcoholic", "alcohol", "vodka", "glass", "shot"]
-    let resturantTerms = ["food", "spoon", "plate", "bowl", "menu", "meat", "meal", "tea", "coffee", "bagel", "muffin", "bread", "cup", "juice", "beverage"]
-    let hotelTerms = ["room", "bed", "hotel", "pool", "receptionist"]
-    let beautyTerms = ["Hair", "barber", "nails", "spa", "facial", "nails", "style", "massage"]
-    let taxiTerms = ["taxi", "limo", "cab", "driver", "uber", "lyft", "carpool", "car", "bus", "transportation", "parking", "ride", "keys"]
-    let laborTerms = ["mechanic", "automotive", "mover", "furniture", "applience"]
-    
-    let fastFoodTip = "Tip is not expected for fast food resturants unless special service was provided"
-    let bartendersTip = "Tip for bartenders should be between 15%-20%"
-    let resturantTip = "Tip in resturants tipcally is between 15%-20%"
-    let hotelTip = "Tip for Hotel Room service typically is included in the price already. If not, 15-20%. Also no tip is expected for Hotel Housekeeping, $1-$2 per person per night."
-    let beautyTip = "Tip for beauty and style is 10%-20%"
-    let taxiTip = "Tip for taxi typically is 15%-20%. Shuttle Drivers and Parking Attendant can also be given $1-$3"
-    let laborTip = "Not expected, Or $5, $10, $20 each depending on the amount"
-    
     var tipRecommendationMessage = ""
-
-    var serviceCategories = [String: [String]]()
-    var tipRecommendations = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,16 +54,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
         
-        serviceCategories = ["Fast Food": fastFoodTerms, "Bartenders": bartendersTerms, "Resturants": resturantTerms, "Hotel Service": hotelTerms, "Beauty & Style": beautyTerms, "Transportation": taxiTerms, "Labor Service": laborTerms]
-        
-        tipRecommendations = ["Fast Food": fastFoodTip, "Bartenders": bartendersTip, "Resturants": resturantTip, "Hotel Service": hotelTip, "Beauty & Style": beautyTip, "Transportation": taxiTip, "Labor Service": laborTip]
-        
         initialConfiguration()
         preparingFrontView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.preparingFrontView), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.saveData), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +67,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         updateFrontViewValues()
         calculateBill()
     }
-    
     
     @IBAction func onViewTap(_ sender: AnyObject) {
         view.endEditing(true)
@@ -128,7 +98,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func detect(image: CIImage) {
         guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
-             fatalError("Loading CoreML Model failed")
+            fatalError("Loading CoreML Model failed")
         }
         
         let request = VNCoreMLRequest(model: model) { (request, error) in
@@ -137,9 +107,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             
             if let firstResult = results.first {
-                for (nameOfService, serviceKeyWords) in self.serviceCategories {
-                    if firstResult.identifier.containsInArray(arr: serviceKeyWords) {
-                        self.tipRecommendationMessage = self.tipRecommendations[nameOfService] ?? ""
+                for (service, keywords) in SmartTipConstants.Terms {
+                    if firstResult.identifier.containsInArray(arr: keywords) {
+                        self.tipRecommendationMessage = SmartTipConstants.Advice[service] ?? ""
                     }
                 }
             }
@@ -193,6 +163,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        theBillData.bill = 0
+        billField.text = ""
+        calculateBill()
+        billField.becomeFirstResponder()
+    }
+    
     @IBAction func tipRateChanged(_ sender: AnyObject) {
         theBillData.tipSelectedIndex = tipControl.selectedSegmentIndex
         calculateBill()
@@ -224,7 +202,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //*********************************************************************************
-    //# MARK: - Segue and Sending and Recieving Data between VCs
+    //# MARK: - Sending and Recieving Data between VCs
     //*********************************************************************************
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettings" {
@@ -247,7 +225,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func preparingFrontView(){
         loadSavedData()
         
-        if (!notUsedForLongTime && defaults.data(forKey: "theBillData") != nil) {
+        if (!notUsedForLongTime && UserDefaults.standard.data(forKey: "theBillData") != nil) {
             lowerViewsAlpha(alpha: 1, animate: false)
             self.topViewConstraintRatio.constant = 130
             self.view.layoutIfNeeded()
@@ -267,7 +245,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             animate = true
             notUsedForLongTime = false
             firstRun = false
-            defaults.set(false, forKey: "firstRun")
+            UserDefaults.standard.set(false, forKey: "firstRun")
             
             billField.becomeFirstResponder()
             billField.placeholder = Locale.current.currencySymbol!
@@ -277,7 +255,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             diesplayMessageToUser(title: "Smart Tip Feature", message: "Use the Camera button on the top left corner of the app to get a recommendation about how much your tip should be for the service/product you are purchasing")
             
             afterInstallation = false
-            defaults.set(false, forKey: "afterInstallation")
+            UserDefaults.standard.set(false, forKey: "afterInstallation")
         }
     }
     
@@ -285,14 +263,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func lowerViewsAlpha(alpha:CGFloat, animate:Bool) {
         
         if animate {
-            UIView.animate(withDuration: 1, animations: {self.tipRatesView.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.tipControl.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.tipTotalView.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.uperDivider.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.shareView.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.lowerDivider.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.roundingView.alpha = alpha}, completion: nil)
         } else {
-            tipRatesView.alpha = alpha
+            tipControl.alpha = alpha
             tipTotalView.alpha = alpha
             uperDivider.alpha = alpha
             shareView.alpha = alpha
@@ -312,7 +290,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         else {
             billField.text = String(theBillData.bill)
         }
-
+        
         numPeopleSlider.maximumValue = Float(theBillData.maxNumP)
         
         if backgroundColor == .black {
@@ -337,45 +315,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //# MARK: - User Defaults Data
     //*********************************************************************************
     func loadSavedData(){
-        if(defaults.object(forKey: "lastTimeUsed") != nil){
-            firstRun = defaults.bool(forKey: "firstRun")
-            afterInstallation = defaults.bool(forKey: "afterInstallation")
+        if(UserDefaults.standard.object(forKey: "lastTimeUsed") != nil){
+            firstRun = UserDefaults.standard.bool(forKey: "firstRun")
+            afterInstallation = UserDefaults.standard.bool(forKey: "afterInstallation")
             
-            let lastTimeUsed = defaults.double(forKey: "lastTimeUsed")
+            let lastTimeUsed = UserDefaults.standard.double(forKey: "lastTimeUsed")
             if CACurrentMediaTime()-lastTimeUsed > clearDefaultsAfter {
                 notUsedForLongTime = true
             } else {
                 notUsedForLongTime = false
             }
             
-            let data = defaults.data(forKey:  "theBillData")
+            let data = UserDefaults.standard.data(forKey:  "theBillData")
             theBillData = (NSKeyedUnarchiver.unarchiveObject(with: data!) as? Bill)!
             
-            backgroundColor = color(rawValue: defaults.integer(forKey: "backgroundColor"))!
+            backgroundColor = color(rawValue: UserDefaults.standard.integer(forKey: "backgroundColor"))!
             if backgroundColor == color.black { //white is the default color - no need to set
                 backGroundView.backgroundColor = .black
                 backgroundColor = .black
             }
-
         }
         else {
             print("No Saved data to restore")
         }
-        
     }
     
     @objc func saveData() {
         let encodedData:Data = NSKeyedArchiver.archivedData(withRootObject:theBillData)
-        defaults.set(encodedData, forKey: "theBillData")
-        defaults.set(CACurrentMediaTime(), forKey: "lastTimeUsed")
-        defaults.set(backgroundColor.rawValue, forKey: "backgroundColor")
+        UserDefaults.standard.set(encodedData, forKey: "theBillData")
+        UserDefaults.standard.set(CACurrentMediaTime(), forKey: "lastTimeUsed")
+        UserDefaults.standard.set(backgroundColor.rawValue, forKey: "backgroundColor")
     }
-    
     
     func clearSavedBillOnly(){
         UserDefaults.standard.removeObject(forKey: "bill")
         UserDefaults.standard.synchronize()
     }
-    
 }
 

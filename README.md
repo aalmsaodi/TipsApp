@@ -24,6 +24,7 @@ The following **Additional** features are implemented:
 
 * [x] Smart Tip Advisor: Using CoreML to detect product through vision detection using Inceptionv3 Model
 * [x] Using SVProgressHUD Pod to improve user experience while processing and detecting captured pics
+* [x] Shake the phone to erase current calculations and to enter new bill.
 * [x] The app looks right in all screen sizes in Portrait orientation.
 * [x] Dark and Light themes
 * [x] The ability to dynamically split the bill between multiple payers

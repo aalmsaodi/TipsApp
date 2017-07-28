@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D91D8F02159C4625C073C1A /* Pods_TipsAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DACD7F02834BC20ABD73A0A /* Pods_TipsAPP.framework */; };
 		CE09F1E31F26E6C600B60F12 /* String+ContainsInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09F1E21F26E6C600B60F12 /* String+ContainsInArray.swift */; };
+		CE410B2A1F2AA92F004DDF94 /* SmartTipConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC6CF081F29820800C678DB /* SmartTipConstants.swift */; };
 		CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490861F0FF12700D00E41 /* AppDelegate.swift */; };
 		CE8490891F0FF12700D00E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8490881F0FF12700D00E41 /* ViewController.swift */; };
 		CE84908C1F0FF12700D00E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE84908A1F0FF12700D00E41 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		CEBBD40B1F179A6200B1053E /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		CEBBD40F1F189F4900B1053E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEBFA3EA1F14A82E00C18528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEC6CF081F29820800C678DB /* SmartTipConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTipConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		CEBBD4061F17305400B1053E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEC6CF081F29820800C678DB /* SmartTipConstants.swift */,
 				CEBBD40B1F179A6200B1053E /* Bill.swift */,
 				CE09F1E21F26E6C600B60F12 /* String+ContainsInArray.swift */,
 			);
@@ -259,6 +262,7 @@
 				CE8490871F0FF12700D00E41 /* AppDelegate.swift in Sources */,
 				CE09F1E31F26E6C600B60F12 /* String+ContainsInArray.swift in Sources */,
 				CE8490B51F1014A500D00E41 /* SettingsViewController.swift in Sources */,
+				CE410B2A1F2AA92F004DDF94 /* SmartTipConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,8 @@
 //
 //  String+ConsistOfInArray.swift
-//  TipsAPP
+//  TipsApp
 //
-//  Created by user on 7/24/17.
+//  Created by Akrm Almsaodi on 7/7/17.
 //  Copyright © 2017 user. All rights reserved.
 //
 
