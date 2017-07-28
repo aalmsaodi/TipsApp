@@ -38,6 +38,6 @@ The following **Additional** features are implemented:
 
 ## Video Walkthrough 
 
-<img src='https://media.giphy.com/media/xUn3CkZRMm0oOYgJKE/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/xUPGGEDPpR7ukoWuKQ/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with GIF Brewery 3 (http://gifbrewery.com).
