@@ -134,7 +134,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                        message: message,
                                        preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction.init(title: "OK", style: .cancel) {
-            UIAlertAction in
+            _ in
             if ("Smart Tip Feature" == title){
                 self.billField.becomeFirstResponder()
             }
