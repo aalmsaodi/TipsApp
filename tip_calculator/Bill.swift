@@ -49,10 +49,10 @@ class Bill: NSObject, NSCoding{
     
     required convenience init(coder aDecoder: NSCoder) {
         let tipPercentages = aDecoder.decodeObject(forKey: "tipPercentages") as! [Int]
-        let tipSelectedIndex = aDecoder.decodeInteger(forKey: "tipSelectedIndex")
+        let tipSelectedIndex = 0
         let includeTax = aDecoder.decodeBool(forKey: "includeTax")
         let taxPercentage = aDecoder.decodeDouble(forKey: "taxPercentage")
-        let numPeople = aDecoder.decodeInteger(forKey: "numPeople")
+        let numPeople = 1
         let maxNumP = aDecoder.decodeInteger(forKey: "maxNumP")
         let bill = aDecoder.decodeInteger(forKey: "bill")
         let total = aDecoder.decodeDouble(forKey: "total")

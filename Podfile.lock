@@ -1,12 +1,15 @@
 PODS:
+  - ASValueTrackingSlider (0.12.1)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
+  - ASValueTrackingSlider
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 318cde45a785f8ef2a0dafb3b421983e764a1c74
+PODFILE CHECKSUM: 8e762bebd805f888f63664588d4848f5f2965e92
 
 COCOAPODS: 1.2.1

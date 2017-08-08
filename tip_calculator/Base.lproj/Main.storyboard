@@ -94,7 +94,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Rtv-7h-Lzh" secondAttribute="bottom" id="zlf-Qf-x2f"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4FM-Bm-PH2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4FM-Bm-PH2">
                                         <rect key="frame" x="0.0" y="270" width="320" height="298"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLk-3j-3yR" userLabel="tipTotalView">
@@ -158,35 +158,22 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3t-ey-aYP" userLabel="ShareView">
                                                 <rect key="frame" x="0.0" y="78.5" width="320" height="112"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-HW-bpc">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-HW-bpc" userLabel="Share Stack View">
                                                         <rect key="frame" x="30" y="10" width="260" height="92"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👥 Split Total between: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jb-Ne-2k1">
-                                                                <rect key="frame" x="23.5" y="0.0" width="213" height="30.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" red="0.2156862745" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8W-9y-wki" userLabel="billPerPerson">
-                                                                <rect key="frame" x="101" y="30.5" width="58" height="31"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8W-9y-wki" userLabel="billPerPerson">
+                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="46"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                 <color key="textColor" red="0.2156862745" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="RTu-R1-bJO" userLabel="peopleSlider">
-                                                                <rect key="frame" x="-2" y="61.5" width="264" height="31.5"/>
-                                                                <color key="minimumTrackTintColor" red="0.2156862745" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                                <color key="thumbTintColor" red="0.2156862745" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <connections>
-                                                                    <action selector="sliderPeopleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="m3M-Y4-XYG"/>
-                                                                </connections>
-                                                            </slider>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmr-QP-mZ1" userLabel="empty">
+                                                                <rect key="frame" x="0.0" y="46" width="260" height="46"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="RTu-R1-bJO" secondAttribute="trailing" id="4Iz-86-9PK"/>
-                                                            <constraint firstItem="RTu-R1-bJO" firstAttribute="leading" secondItem="gwQ-HW-bpc" secondAttribute="leading" id="M1u-Gr-0q7"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -210,8 +197,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R2r-7r-fCA">
                                                         <rect key="frame" x="40" y="10" width="240" height="76.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rounded share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-Ra-B16">
-                                                                <rect key="frame" x="68.5" y="0.0" width="103.5" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rounded Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-Ra-B16">
+                                                                <rect key="frame" x="67.5" y="0.0" width="105" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.2156862745" green="0.42352941179999998" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -274,6 +261,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="eMy-Fr-cka" userLabel="Settings">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-1"/>
                             <connections>
                                 <segue destination="TUK-y7-ocj" kind="push" identifier="goToSettings" id="hUv-Yk-xaY"/>
                             </connections>
@@ -286,11 +274,9 @@
                         <outlet property="billPerPerson" destination="v8W-9y-wki" id="G1C-RD-dz4"/>
                         <outlet property="eachShare" destination="NJm-mx-yxT" id="m3n-DQ-de3"/>
                         <outlet property="lowerDivider" destination="Wiy-0O-fYN" id="QOs-qP-EXi"/>
-                        <outlet property="numPeopleLabel" destination="9jb-Ne-2k1" id="tDO-xH-17I"/>
-                        <outlet property="numPeopleSlider" destination="RTu-R1-bJO" id="PP2-cK-KT3"/>
                         <outlet property="roundingControl" destination="sxz-MR-a8a" id="82I-oW-2t8"/>
                         <outlet property="roundingView" destination="oL7-7A-D3l" id="W8v-4I-v5r"/>
-                        <outlet property="shareView" destination="e3t-ey-aYP" id="ELC-LD-9Lu"/>
+                        <outlet property="shareStackView" destination="gwQ-HW-bpc" id="xlg-iO-5Tq"/>
                         <outlet property="smartCameraButton" destination="xzv-Pr-nAL" id="yAb-tw-aKb"/>
                         <outlet property="tipControl" destination="aev-Ja-VTZ" id="Ahl-eO-i9e"/>
                         <outlet property="tipLabel" destination="gec-W8-y1X" id="WGj-Di-qFk"/>
@@ -560,6 +546,7 @@
                         <outlet property="MaxnumPeople" destination="QUT-uh-r3k" id="lAB-fa-R8z"/>
                         <outlet property="backgroundView" destination="nbo-WL-YiL" id="v0r-cV-6q6"/>
                         <outlet property="darkLightButton" destination="k3F-or-yUN" id="6eI-h0-qda"/>
+                        <outlet property="learnMoreButton" destination="LkG-Yi-HvX" id="reT-w9-OYX"/>
                         <outlet property="taxPercentageField" destination="iJ2-OK-SIc" id="TET-bM-MFr"/>
                         <outlet property="taxSwitch" destination="kFF-aK-40P" id="AWw-UT-7SP"/>
                         <outlet property="tipPercent_1" destination="UJK-EG-hMp" id="VvL-vc-ltd"/>

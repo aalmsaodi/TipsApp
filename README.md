@@ -23,10 +23,10 @@ The following **Optional** features are implemented:
 The following **Additional** features are implemented:
 
 * [x] Smart Tip Advisor: Using CoreML to detect product through vision detection using Inceptionv3 Model
-* [x] Using SVProgressHUD Pod to improve user experience while processing and detecting captured pics
 * [x] Shake the phone to erase current calculations and to enter new bill.
 * [x] The app looks right in all screen sizes in Portrait orientation.
 * [x] Dark and Light themes
+* [x] Using SVProgressHUD and ASValueTrackingSlider Pods for better user experinece
 * [x] The ability to dynamically split the bill between multiple payers
 * [x] Rounding up/down the share to easily pay the bill
 * [x] The option to include/exclude the sales tax in calculating the tip
@@ -34,11 +34,16 @@ The following **Additional** features are implemented:
 * [x] The ability to change the maximum default number of payers
 * [x] Link to external resource to learn more about the appropriate tip percentages
 
-**Note:** I purposely tried to practice in this project as many new concepts as possible such as class extentions, protocols, segues, Cocoapods, closures, CoreML, Vision, OOP, and MVC Model and more! For this reason, the project might look more complicated than it should be :)
+**Notes and thoughts:**
+1- I purposely tried to practice in this project as many new concepts as possible such as class extentions, protocols, segues, Cocoapods, closures, CoreML, Vision, OOP, and MVC Model and more! For this reason, the project might look more complicated than it should be :)
+2- The style of the keyboard on the GIF is not normal because the app was running on the beta version of iOS 11.
+3- The very big size of the app directory is due to the big Machine Learing file (Inceptionv3)
+4- Please make sure to run this app on iOS 11 to get full functionality.
+5- I started already another app that is more complicated and usefull involving tableviews, contacts, notification prodcasting, and local notifications, and much more. I feel very confident that I will overcome all of the challenges that you can come up with, and will be of assistance to my other colleagues.
 
 ## Video Walkthrough 
 
-<img src='https://media.giphy.com/media/xUPGGEDPpR7ukoWuKQ/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/l1J3OU3vElH8Na3ks/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with GIF Brewery 3 (http://gifbrewery.com).
 

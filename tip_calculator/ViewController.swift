@@ -10,27 +10,26 @@ import UIKit
 import CoreML
 import Vision
 import SVProgressHUD
+import ASValueTrackingSlider
 
 enum color:Int {
     case black
     case white
 }
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CanReceive {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASValueTrackingSliderDataSource, CanReceive {
     
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var billPerPerson: UILabel!
-    @IBOutlet weak var numPeopleLabel: UILabel!
-    @IBOutlet weak var numPeopleSlider: UISlider!
     @IBOutlet weak var roundingControl: UISegmentedControl!
     @IBOutlet weak var eachShare: UILabel!
     @IBOutlet var backGroundView: UIView!
     @IBOutlet weak var tipTotalView: UIView!
     @IBOutlet weak var uperDivider: UIView!
-    @IBOutlet weak var shareView: UIView!
+    @IBOutlet weak var shareStackView: UIStackView!
     @IBOutlet weak var lowerDivider: UIView!
     @IBOutlet weak var roundingView: UIView!
     @IBOutlet weak var smartCameraButton: UIBarButtonItem!
@@ -47,18 +46,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let imagePicker = UIImagePickerController()
     var tipRecommendationMessage = ""
     
+    let numOfPeopleSlider = ASValueTrackingSlider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = false
         
         initialConfiguration()
         preparingFrontView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.preparingFrontView), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.saveData), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(preparingFrontView), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(saveData), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +68,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func onViewTap(_ sender: AnyObject) {
         view.endEditing(true)
     }
+    
     
     //*********************************************************************************
     //# MARK: - Image taking and CoreML detecting using Inception3 Model
@@ -95,6 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         diesplayMessageToUser(title: "Smart Tip Recommendation", message: tipRecommendationMessage)
     }
+    
     
     func detect(image: CIImage) {
         guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
@@ -144,6 +143,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(dialog, animated: false, completion: nil)
     }
     
+    
     //*********************************************************************************
     //# MARK: - Bill Calculation
     //*********************************************************************************
@@ -176,11 +176,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         calculateBill()
     }
     
-    @IBAction func sliderPeopleChanged(_ sender: AnyObject) {
-        theBillData.numPeople = Int(numPeopleSlider.value)
-        numPeopleLabel.text = "👥 Split between: " + String(theBillData.numPeople)
+    @objc func sliderPeopleChanged() {
+        theBillData.numPeople = Int(numOfPeopleSlider.value)
         calculateBill()
     }
+    
+    func slider(_ slider: ASValueTrackingSlider!, stringForValue value: Float) -> String! {
+        
+        return "Split Between \(Int(value))"
+    }
+    
     
     func calculateBill() {
         formatter.numberStyle = .currency
@@ -192,7 +197,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         tipLabel.text = formatter.string(from: NSNumber(value: theBillData.calculateTip()))
         
         let theShare = theBillData.calculateShare()
-        billPerPerson.text = "Total per person: " + formatter.string(from: NSNumber(value: theShare))!
+        billPerPerson.text = "Total per Person \n" + formatter.string(from: NSNumber(value: theShare))!
         
         if (roundingControl.selectedSegmentIndex == 0){ //index 0 for rounding up
             eachShare.text = formatter.string(from: NSNumber(value: theShare.rounded(.up)))
@@ -200,6 +205,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             eachShare.text = formatter.string(from: NSNumber(value: theShare.rounded(.down)))
         }
     }
+    
     
     //*********************************************************************************
     //# MARK: - Sending and Recieving Data between VCs
@@ -214,10 +220,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    
     func dataReceived(theBillData:Bill, backgroundColor:color) {
         self.theBillData = theBillData
         self.backgroundColor = backgroundColor
     }
+    
     
     //*********************************************************************************
     //# MARK: - Front View and Appearance
@@ -236,8 +244,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if (notUsedForLongTime || firstRun || theBillData.bill == 0) {
             clearSavedBillOnly()
-            
-            billField.text = nil
             
             lowerViewsAlpha(alpha: 0, animate: false)
             self.topViewConstraintRatio.constant = 0
@@ -266,14 +272,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animate(withDuration: 1, animations: {self.tipControl.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.tipTotalView.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.uperDivider.alpha = alpha}, completion: nil)
-            UIView.animate(withDuration: 1, animations: {self.shareView.alpha = alpha}, completion: nil)
+            UIView.animate(withDuration: 1, animations: {self.shareStackView.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.lowerDivider.alpha = alpha}, completion: nil)
             UIView.animate(withDuration: 1, animations: {self.roundingView.alpha = alpha}, completion: nil)
         } else {
             tipControl.alpha = alpha
             tipTotalView.alpha = alpha
             uperDivider.alpha = alpha
-            shareView.alpha = alpha
+            shareStackView.alpha = alpha
             lowerDivider.alpha = alpha
             roundingView.alpha = alpha
         }
@@ -281,26 +287,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func updateFrontViewValues() {
         for i in 0...2 {
-            tipControl.setTitle(String(theBillData.tipPercentages[i]) + "%", forSegmentAt: i)
-        }
+            tipControl.setTitle(String(theBillData.tipPercentages[i]) + "%", forSegmentAt: i)}
         
-        if theBillData.bill == 0 {
-            billField.text = nil
-        }
-        else {
-            billField.text = String(theBillData.bill)
-        }
+        if theBillData.bill == 0 {billField.text = nil}
+        else {billField.text = String(theBillData.bill)}
         
-        numPeopleSlider.maximumValue = Float(theBillData.maxNumP)
+        numOfPeopleSlider.maximumValue = Float(theBillData.maxNumP)
         
-        if backgroundColor == .black {
-            backGroundView.backgroundColor = .black
-        } else {
-            backGroundView.backgroundColor = .white
-        }
+        if backgroundColor == .black {backGroundView.backgroundColor = .black}
+        else {backGroundView.backgroundColor = .white}
     }
     
     func initialConfiguration(){
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        
+        #if !(arch(i386) || arch(x86_64)) //to avoid crashing when running on simulator
+            imagePicker.sourceType = .camera
+        #endif
+        
+        // Setting up the number of people slider
+        numOfPeopleSlider.dataSource = self
+        numOfPeopleSlider.minimumValue = 1
+        numOfPeopleSlider.popUpViewCornerRadius = 12
+        numOfPeopleSlider.showPopUpView(animated: true)
+        numOfPeopleSlider.popUpViewColor = UIColor(red: 55/255, green: 108/255, blue: 139/255, alpha: 1)
+        numOfPeopleSlider.addTarget(self, action: #selector(sliderPeopleChanged), for: .valueChanged)
+        numOfPeopleSlider.font = UIFont(name: numOfPeopleSlider.font.fontName, size: 18)
+        
+        shareStackView.insertArrangedSubview(numOfPeopleSlider, at: 2)
+        
         // Setting up the coordinats of "billField"
         billField.layer.sublayerTransform = CATransform3DMakeTranslation(-30, 0, 0)
         
@@ -310,6 +327,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         navigationController?.navigationBar.barStyle = UIBarStyle.black
         navigationController?.navigationBar.tintColor = UIColor.white
     }
+    
     
     //*********************************************************************************
     //# MARK: - User Defaults Data
@@ -326,6 +344,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 notUsedForLongTime = false
             }
             
+            //Retriving all data regardless of the var notUsedForLongTime
+            //bill will be deleted only if not used for longer than var clearDefaultsAfter
             let data = UserDefaults.standard.data(forKey:  "theBillData")
             theBillData = (NSKeyedUnarchiver.unarchiveObject(with: data!) as? Bill)!
             
@@ -350,6 +370,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func clearSavedBillOnly(){
         UserDefaults.standard.removeObject(forKey: "bill")
         UserDefaults.standard.synchronize()
+        
+        billField.text = nil
+        theBillData.bill = 0
     }
 }
 

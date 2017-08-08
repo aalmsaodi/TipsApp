@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var MaxnumPeople: UITextField!
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var darkLightButton: UIBarButtonItem!
+    @IBOutlet weak var learnMoreButton: UIButton!
     
     var delegate:CanReceive?
     var theBillData = Bill()
@@ -29,6 +30,9 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        learnMoreButton.layer.cornerRadius = 5
+        learnMoreButton.layer.borderColor = UIColor.black.cgColor
         
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SettingsViewController.goBack))
         navigationItem.leftBarButtonItem = backButton
