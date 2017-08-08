@@ -64,4 +64,4 @@ In terms of describing outlets and actions, I would simply say that they are ref
 **Answer:**
 A strong reference cycle occurs when two objects have strong retained reference to each other.  Now since closures in swift are objects, Automatic Reference Counting apply to them. With this being said, we can get a strong reference cycle if we have a property of a class that has a closure (calculated property), which captures self to access one of the other class prosperities.  In this case, the closure and the instance of the class will have a strong reference to each other, and the ARC will never be able to get rid of them; in another word, we will have a memory leak!
 
-We can avoid this condition by making a weak or unowned reference to self. However, using weak reference will capture self as an optional type, and it will need 
+We can avoid this condition by making a weak or unowned reference to self. However, using weak reference will capture self as an optional type, and it will need to be unwrapped. In our case, it is safe to reference self as unowned because it can never be nil during the life of the closure!
