@@ -43,7 +43,8 @@ The following **Additional** features are implemented:
 
 ## Video Walkthrough 
 
-<img src='https://media.giphy.com/media/l1J3OU3vElH8Na3ks/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/3o6vXIWnl1rScxMN8Y/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Higher resolution GIF: https://media.giphy.com/media/l1J3OU3vElH8Na3ks/giphy.gif
 
 GIF created with GIF Brewery 3 (http://gifbrewery.com).
 
