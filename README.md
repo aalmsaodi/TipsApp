@@ -35,11 +35,11 @@ The following **Additional** features are implemented:
 * [x] Link to external resource to learn more about the appropriate tip percentages
 
 **Notes and thoughts:**
-1- I purposely tried to practice in this project as many new concepts as possible such as class extentions, protocols, segues, Cocoapods, closures, CoreML, Vision, OOP, and MVC Model and more! For this reason, the project might look more complicated than it should be :)
-2- The style of the keyboard on the GIF is not normal because the app was running on the beta version of iOS 11.
-3- The very big size of the app directory is due to the big Machine Learing file (Inceptionv3)
-4- Please make sure to run this app on iOS 11 to get full functionality.
-5- I started already another app that is more complicated and usefull involving tableviews, contacts, notification prodcasting, and local notifications, and much more. I feel very confident that I will overcome all of the challenges that you can come up with, and will be of assistance to my other colleagues.
+1. I purposely tried to practice in this project as many new concepts as possible such as class extentions, protocols, segues, Cocoapods, closures, CoreML, Vision, OOP, and MVC Model and more! For this reason, the project might look more complicated than it should be :)
+2. The style of the keyboard on the GIF is not normal because the app was running on the beta version of iOS 11.
+3. The very big size of the app directory is due to the big Machine Learing file (Inceptionv3)
+4. Please make sure to run this app on iOS 11 to get full functionality.
+5. I started already another app that is more complicated and usefull involving tableviews, contacts, notification prodcasting, and local notifications, and much more. I feel very confident that I will overcome all of the challenges that you can come up with, and will be of assistance to my other colleagues.
 
 ## Video Walkthrough 
 
